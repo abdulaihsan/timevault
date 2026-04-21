@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Vault | Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#5a111a] bg-[url('{% static 'vault1.jpg' %}')] bg-cover bg-center bg-no-repeat bg-blend-multiply text-[#f4e7d3] font-serif min-h-screen flex items-center justify-center p-6">
+
+    <div class="w-full max-w-2xl p-8 bg-[#3d0b11] border border-[#8b2332] rounded-md shadow-2xl">
+        
+        <div class="text-center mb-8">
+            <h1 class="text-4xl italic mb-2 tracking-wider">Time Vault</h1>
+            <p class="text-sm opacity-80 uppercase tracking-widest">Register your interest</p>
+        </div>
+
+        {% if success %}
+            <div class="text-center p-10 border border-[#d4af37] bg-[#2a070c] rounded-md shadow-inner">
+                <h2 class="text-3xl mb-4 text-[#d4af37] italic tracking-wide">Registration Confirmed.</h2>
+                <p class="text-lg opacity-80 mb-8">Your spot in the vault has been noted. We will contact you soon with the next steps.</p>
+                <a href="/" class="inline-block border border-[#d4af37] text-[#d4af37] font-bold py-2 px-6 rounded hover:bg-[#d4af37] hover:text-[#3d0b11] transition duration-300 tracking-widest uppercase text-sm">
+                    Register Another
+                </a>
+            </div>
+        {% else %}
+            <form method="POST" class="space-y-6">
+                {% csrf_token %}
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="md:col-span-2">
+                        <label class="block text-sm mb-1 text-[#d4af37]">Full Name *</label>
+                        <input type="text" name="name" required class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1 text-[#d4af37]">Email Address *</label>
+                        <input type="email" name="email" required class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1 text-[#d4af37]">Contact Number *</label>
+                        <input type="tel" name="contact_number" required class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1 text-[#d4af37]">Instagram Handle</label>
+                        <input type="text" name="instagram_handle" class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1 text-[#d4af37]">Backup Contact Number *</label>
+                        <input type="tel" name="backup_contact" required class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm mb-1 text-[#d4af37]">Your Batch *</label>
+                    <select name="batch" required class="w-full p-3 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors cursor-pointer">
+                        <option value="" disabled selected>Select your batch...</option>
+                        <option value="32">Batch 32</option>
+                        <option value="33">Batch 33</option>
+                        <option value="34">Batch 34</option>
+                        <option value="35">Batch 35</option>
+                    </select>
+                </div>
+
+                <div class="p-5 bg-[#2a070c] border border-[#d4af37] rounded-md">
+                    <h3 class="text-lg mb-4 text-[#d4af37] border-b border-[#8b2332] pb-2">Select Vault Duration</h3>
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="radio" name="plan_years" value="3" checked class="w-5 h-5 accent-[#d4af37] bg-[#2a070c] border-[#8b2332]" />
+                            <span class="group-hover:text-[#d4af37] transition-colors">3 Years <span class="opacity-70 text-sm italic">(700 Rs)</span></span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="radio" name="plan_years" value="5" class="w-5 h-5 accent-[#d4af37] bg-[#2a070c] border-[#8b2332]" />
+                            <span class="group-hover:text-[#d4af37] transition-colors">5 Years <span class="opacity-70 text-sm italic">(900 Rs)</span></span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-[#d4af37] text-[#3d0b11] font-bold text-lg p-3 rounded hover:bg-[#e5c158] transition duration-300 uppercase tracking-widest shadow-lg mt-4">
+                    Register Interest
+                </button>
+            </form>
+        {% endif %}
+    </div>
+
+</body>
+</html>
