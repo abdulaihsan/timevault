@@ -12,7 +12,7 @@ class VaultLetter(models.Model):
     email = models.EmailField()
     contact_number = models.CharField(max_length=20)
     instagram_handle = models.CharField(max_length=50, blank=True, null=True)
-    backup_contact = models.CharField(max_length=20, blanlk=True, null=True)
+    backup_contact = models.CharField(max_length=20, blank=True, null=True)
     batch = models.IntegerField(choices=BATCH_CHOICES)
     plan_years = models.IntegerField(choices=[(3, '3 Years'), (5, '5 Years')])
     created_at = models.DateTimeField(auto_now_add=True)
