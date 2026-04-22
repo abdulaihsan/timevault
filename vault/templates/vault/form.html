@@ -6,79 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Vault | Registration</title>
     <link rel="icon" type="image/png" href="{% static 'favicon.png' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            color: darkred;
+        }
+        h1, h2, h3, .vintage-font {
+            font-family: 'Cinzel', serif;
+            color: darkred;
+        }
+    </style>
 </head>
-<body class="bg-[#5a111a] bg-[url('{% static 'vault1.jpg' %}')] bg-cover bg-center bg-no-repeat bg-blend-multiply text-[#f4e7d3] font-serif min-h-screen flex items-center justify-center p-6">
+<body class="bg-[url('{% static 'background.jpeg' %}')] bg-cover bg-center bg-no-repeat bg-fixed text-[#f4e7d3] min-h-screen flex items-center justify-center p-6">
 
-    <div class="w-full max-w-2xl p-8 bg-[#3d0b11] border border-[#8b2332] rounded-md shadow-2xl">
+    <div class="w-full max-w-2xl p-8">
         
-        <div class="text-center mb-8">
-            <h1 class="text-4xl italic mb-2 tracking-wider">Time Vault</h1>
-            <p class="text-sm opacity-80 uppercase tracking-widest">Register your interest</p>
+        <div class="text-center mb-12">
+            <img src="{% static 'logo.png' %}" alt="Time Vault Logo" class="h-20 mx-auto mb-4 drop-shadow-lg" />
+            <h1 class="text-6xl mb-2 tracking-widest text-[darkred]">Time Vault</h1>
+            <p class="text-lg opacity-90 uppercase tracking-[0.3em] vintage-font">Registration</p>
         </div>
 
         {% if success %}
-            <div class="text-center p-10 border border-[#d4af37] bg-[#2a070c] rounded-md shadow-inner">
-                <h2 class="text-3xl mb-4 text-[#d4af37] italic tracking-wide">Registration Confirmed.</h2>
-                <p class="text-lg opacity-80 mb-8">Your spot in the vault has been noted. We will contact you soon with the next steps.</p>
-                <a href="/" class="inline-block border border-[#d4af37] text-[#d4af37] font-bold py-2 px-6 rounded hover:bg-[#d4af37] hover:text-[#3d0b11] transition duration-300 tracking-widest uppercase text-sm">
-                    Register Another
+            <div class="text-center p-6 sm:p-8 md:p-12 bg-black/40 backdrop-blur-sm border border-[#d4af37]/30 rounded-lg w-full">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 text-[#d4af37] tracking-wider">Registration Confirmed</h2>
+                <p class="text-base sm:text-lg md:text-xl mb-6 sm:mb-10 text-[#f4e7d3]/90 italic">Your presence has been recorded in the annals of Time Vault. We shall summon you when the stars align.</p>
+                <a href="/" class="inline-block border-2 border-[#d4af37] text-[#d4af37] font-bold py-2 sm:py-3 px-6 sm:px-10 rounded-full hover:bg-[#d4af37] hover:text-[#1a0505] transition duration-500 tracking-[0.2em] uppercase text-xs sm:text-sm vintage-font">
+                    Record Another
                 </a>
             </div>
         {% else %}
-            <form method="POST" class="space-y-6">
+            <form method="POST" class="space-y-8">
                 {% csrf_token %}
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="md:col-span-2">
-                        <label class="block text-sm mb-1 text-[#d4af37]">Full Name *</label>
-                        <input type="text" name="name" required class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                        <label class="block text-xs mb-2 text-[darkred] vintage-font uppercase tracking-[0.2em]">Full Name *</label>
+                        <input type="text" name="name" required class="w-full p-3 bg-black/20 border-b-2 border-[#d4af37]/50 text-white focus:outline-none focus:border-[#d4af37] transition-all duration-300 placeholder-[#f4e7d3]/30" />
                     </div>
                     <div>
-                        <label class="block text-sm mb-1 text-[#d4af37]">Email Address *</label>
-                        <input type="email" name="email" required class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                        <label class="block text-xs mb-2 text-[darkred] vintage-font uppercase tracking-[0.2em]">Email Address *</label>
+                        <input type="email" name="email" required class="w-full p-3 bg-black/20 border-b-2 border-[#d4af37]/50 text-white focus:outline-none focus:border-[#d4af37] transition-all duration-300" />
                     </div>
                     <div>
-                        <label class="block text-sm mb-1 text-[#d4af37]">Contact Number *</label>
-                        <input type="tel" name="contact_number" required class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                        <label class="block text-xs mb-2 text-[darkred] vintage-font uppercase tracking-[0.2em]">Contact Number *</label>
+                        <input type="tel" name="contact_number" required class="w-full p-3 bg-black/20 border-b-2 border-[#d4af37]/50 text-white focus:outline-none focus:border-[#d4af37] transition-all duration-300" />
                     </div>
                     <div>
-                        <label class="block text-sm mb-1 text-[#d4af37]">Instagram Handle</label>
-                        <input type="text" name="instagram_handle" class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                        <label class="block text-xs mb-2 text-[darkred] vintage-font uppercase tracking-[0.2em]">Instagram Handle</label>
+                        <input type="text" name="instagram_handle" class="w-full p-3 bg-black/20 border-b-2 border-[#d4af37]/50 text-white focus:outline-none focus:border-[#d4af37] transition-all duration-300" />
                     </div>
                     <div>
-                        <label class="block text-sm mb-1 text-[#d4af37]">Backup Contact Number</label>
-                        <input type="tel" name="backup_contact" class="w-full p-2 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors" />
+                        <label class="block text-xs mb-2 text-[darkred] vintage-font uppercase tracking-[0.2em]">Backup Contact</label>
+                        <input type="tel" name="backup_contact" class="w-full p-3 bg-black/20 border-b-2 border-[#d4af37]/50 text-white focus:outline-none focus:border-[#d4af37] transition-all duration-300" />
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-sm mb-1 text-[#d4af37]">Your Batch *</label>
-                    <select name="batch" required class="w-full p-3 bg-[#2a070c] border border-[#8b2332] rounded text-white focus:outline-none focus:border-[#d4af37] transition-colors cursor-pointer">
-                        <option value="" disabled selected>Select your batch...</option>
-                        <option value="32">Batch 32</option>
-                        <option value="33">Batch 33</option>
-                        <option value="34">Batch 34</option>
-                        <option value="35">Batch 35</option>
+                    <label class="block text-xs mb-2 text-[darkred] vintage-font uppercase tracking-[0.2em]">Batch *</label>
+                    <select name="batch" required class="w-full p-3 bg-black/40 border-b-2 border-[#d4af37]/50 text-white focus:outline-none focus:border-[#d4af37] transition-all duration-300 cursor-pointer appearance-none">
+                        <option value="" disabled selected class="bg-[#1a0505]">Select your batch...</option>
+                        <option value="32" class="bg-[#1a0505]">Batch 32</option>
+                        <option value="33" class="bg-[#1a0505]">Batch 33</option>
+                        <option value="34" class="bg-[#1a0505]">Batch 34</option>
+                        <option value="35" class="bg-[#1a0505]">Batch 35</option>
                     </select>
                 </div>
 
-                <div class="p-5 bg-[#2a070c] border border-[#d4af37] rounded-md">
-                    <h3 class="text-lg mb-4 text-[#d4af37] border-b border-[#8b2332] pb-2">Select Vault Duration</h3>
-                    <div class="flex flex-col sm:flex-row gap-6">
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input type="radio" name="plan_years" value="3" checked class="w-5 h-5 accent-[#d4af37] bg-[#2a070c] border-[#8b2332]" />
-                            <span class="group-hover:text-[#d4af37] transition-colors">3 Years <span class="opacity-70 text-sm italic">(700 Rs)</span></span>
+                <div class="p-6 bg-black/30 border border-[#d4af37]/20 rounded-lg">
+                    <h3 class="text-sm font-bold mb-6 text-[#d4af37] uppercase tracking-[0.2em] vintage-font border-b border-[#d4af37]/10 pb-3 text-center">Select Vault Duration</h3>
+                    <div class="flex flex-col sm:flex-row justify-center gap-10">
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="radio" name="plan_years" value="3" checked class="w-5 h-5 accent-[#d4af37]" />
+                            <span class="group-hover:text-[#d4af37] transition-colors text-lg tracking-wide">III Years <span class="opacity-60 text-sm italic">(700 Rs)</span></span>
                         </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input type="radio" name="plan_years" value="5" class="w-5 h-5 accent-[#d4af37] bg-[#2a070c] border-[#8b2332]" />
-                            <span class="group-hover:text-[#d4af37] transition-colors">5 Years <span class="opacity-70 text-sm italic">(900 Rs)</span></span>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="radio" name="plan_years" value="5" class="w-5 h-5 accent-[#d4af37]" />
+                            <span class="group-hover:text-[#d4af37] transition-colors text-lg tracking-wide">V Years <span class="opacity-60 text-sm italic">(900 Rs)</span></span>
                         </label>
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-[#d4af37] text-[#3d0b11] font-bold text-lg p-3 rounded hover:bg-[#e5c158] transition duration-300 uppercase tracking-widest shadow-lg mt-4">
-                    Register Interest
+                <button type="submit" class="w-full border-2 border-[darkred] text-[darkred] font-bold text-xl p-4 rounded hover:bg-[#d4af37] hover:text-[#1a0505] transition duration-500 uppercase tracking-[0.3em] vintage-font shadow-[0_0_15px_rgba(212,175,55,0.1)] mt-8">
+                    Seal the Record
                 </button>
             </form>
         {% endif %}
